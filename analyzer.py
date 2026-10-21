@@ -1,6 +1,6 @@
 import os
 from langchain_openai import ChatOpenAI
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
 def audit_cloud_config(api_key, config_data):
