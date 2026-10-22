@@ -1,13 +1,29 @@
-# ☁️ Cloud-Sentinel
+# Cloud-Sentinel
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cloud-sentinel.streamlit.app/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+An AI-assisted Multi-Cloud IAM and Misconfiguration Auditor designed to review cloud security findings, identify risky permissions, and recommend practical remediation.
 
-A **Multi-Cloud IAM & Misconfiguration Auditor** engineered for automated cloud security posture management and compliance checks.
+Developed by NomaanOS-Dev.
 
-## 🌟 Key Capabilities
-* **IAM Policy Audit:** Detects overly permissive wildcard (`*`) access and public data exposures.
-* **Compliance Mapping:** Corroborates findings with CIS Benchmarks and NIST controls.
-* **Remediation Export:** Provides secure policy rewrites and downloadable PDF/Markdown reports.
+## 🚀 Key Features
 
-Developed as part of the **Sovereign AI Stack (SAS)** research initiative at **IHFC — IIT Delhi**.
+- **Multi-Cloud Security Review:** Organize security findings across AWS, Microsoft Azure, and Google Cloud Platform (GCP).
+- **IAM Risk Assessment:** Highlight excessive permissions and potentially risky administrative roles.
+- **Misconfiguration Analysis:** Review findings involving public storage access and access-control weaknesses.
+- **AI-Assisted Auditing:** Generate evidence-based assessments, severity estimates, and remediation recommendations.
+- **CSV Import and Export:** Upload findings and download audit data.
+- **Interactive Dashboard:** Review findings and export AI-generated audit reports through Streamlit.
+
+## 🛠️ Tech Stack
+
+Python 3.x | Streamlit | OpenAI API | Pandas
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/NomaanOS-Dev/Cloud-Sentinel.git
+cd Cloud-Sentinel
+pip install -r requirements.txt
+streamlit run app.py
+Configure your OpenAI API key in the application sidebar.
+🛡️ Security Notice
+Demo findings are illustrative. This application does not scan live cloud accounts unless additional integrations are implemented. Verify findings and validate remediation steps before applying changes to production environments.
