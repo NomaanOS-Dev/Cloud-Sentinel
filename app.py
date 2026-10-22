@@ -25,7 +25,11 @@ if st.button("Load Sample Findings"):
 uploaded = st.file_uploader("Upload findings CSV (optional)", type=["csv"])
 if uploaded:
     try:
-        st.session_state["findings"] = pd.read_csv(uploaded)
+        df = pd.read_csv(uploaded)
+        if df.empty:
+            st.warning("Uploaded CSV is empty.")
+        else:
+            st.session_state["findings"] = df
     except Exception as exc:
         st.error(f"CSV error: {exc}")
 
@@ -41,19 +45,16 @@ if "findings" in st.session_state:
         "text/csv",
     )
 
-    if st.button("Audit Findings with AI", type="primary"):
-        if not api_key:
-            st.warning("Enter your OpenAI API key.")
-        else:
-            with st.spinner("Auditing findings..."):
-                report = analyze_cloud_security(api_key, df.to_dict("records"))
-            st.subheader("Security Audit Report")
-            st.markdown(report)
-            st.download_button(
-                "Download Audit Report",
-                report,
-                "cloud_sentinel_audit.txt",
-                "text/plain",
-            )
+    if st.button("Audit Findings", type="primary"):
+        with st.spinner("Auditing findings..."):
+            report = analyze_cloud_security(api_key, df.to_dict("records"))
+        st.subheader("Security Audit Report")
+        st.markdown(report)
+        st.download_button(
+            "Download Audit Report",
+            report,
+            "cloud_sentinel_audit.txt",
+            "text/plain",
+        )
 
 st.caption("AI recommendations require human verification.")
